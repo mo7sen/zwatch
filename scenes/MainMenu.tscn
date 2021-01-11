@@ -1,0 +1,43 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.629944
+margin_right = 0.629883
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game Name" type="Label" parent="."]
+margin_left = 0.630005
+margin_top = 1.37912
+margin_right = 1000.63
+margin_bottom = 150.63
+text = "zwatch"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 500.0
+margin_top = 297.341
+margin_right = 558.432
+margin_bottom = 317.341
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 337.172
+margin_top = 418.112
+margin_right = 687.172
+margin_bottom = 498.112
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
