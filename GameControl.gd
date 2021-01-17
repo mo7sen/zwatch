@@ -34,14 +34,17 @@ func enemy_killed():
 	enemies_alive -= 1
 	score += 1
 	if enemies_alive <= 0:
+		var timer = Timer.new()
+		yield(get_tree().create_timer(10), "timeout")
 		spawn_wave()
 
 func spawn_wave():
+	get_tree().call_group("enemies", "queue_free")
 	spawner_node.spawn_wave(wave_size)
 	wave_number += 1
 	enemies_alive = wave_size
 	wave_size = 1
-	pass
+
 
 func reg_bullet():
 	wave_size += 1

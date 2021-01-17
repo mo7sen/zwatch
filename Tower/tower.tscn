@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Tower/Model/Material/Metal.material" type="Material" id=2]
 [ext_resource path="res://Tower/Model/Material/Wood.material" type="Material" id=3]
@@ -231,10 +231,6 @@ surfaces/0 = {
 "vertex_count": 1608
 }
 
-[sub_resource type="CylinderShape" id=20]
-radius = 9.51391
-height = 1.73058
-
 [node name="Tower" type="Spatial"]
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0 )
 
@@ -272,11 +268,11 @@ material/0 = ExtResource( 3 )
 [node name="StaticBody" type="StaticBody" parent="Cabin"]
 
 [node name="Floor" type="CollisionShape" parent="Cabin/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.68048, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25546, 0 )
 shape = SubResource( 7 )
 
 [node name="Ceil" type="CollisionShape" parent="Cabin/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70.7001, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.9212, 0 )
 shape = SubResource( 7 )
 
 [node name="Side" type="CollisionShape" parent="Cabin/StaticBody"]
@@ -355,9 +351,3 @@ material/0 = null
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
 mesh = SubResource( 19 )
 material/0 = null
-
-[node name="BaseBody" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="BaseBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05613, 0 )
-shape = SubResource( 20 )

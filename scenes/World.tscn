@@ -26,6 +26,10 @@ _data = {
 }
 
 [sub_resource type="Environment" id=6]
+fog_color = Color( 0.156863, 0, 0, 1 )
+dof_blur_far_distance = 94.33
+glow_bloom = 0.5
+glow_blend_mode = 0
 
 [node name="World" type="Navigation"]
 
@@ -528,14 +532,14 @@ transform = Transform( 8.74228e-08, 0, 1, 0, 1, 0, -1, 0, 8.74228e-08, 209.964, 
 transform = Transform( 8.74228e-08, 0, 1, 0, 1, 0, -1, 0, 8.74228e-08, 147.964, 0, -104.743 )
 
 [node name="Tower" parent="NavigationMeshInstance" instance=ExtResource( 2 )]
-transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.98967, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.98967, 0 )
 
 [node name="OmniLight" type="OmniLight" parent="NavigationMeshInstance/Tower"]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 20.0257, 0 )
 omni_range = 51.6646
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.2737, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.1821, 0 )
 
 [node name="Spawner" type="Spatial" parent="."]
 script = ExtResource( 4 )
