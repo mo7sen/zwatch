@@ -1,13 +1,47 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Player/ArmedArms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
 
-
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
 height = 1.5
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+float smooth_rect(vec2 uv, vec2 pos, vec2 size, float smoothing) {
+  vec2 col = smoothstep(pos - size, pos - size + smoothing, uv);
+  col *= smoothstep(1.0 - pos - size, 1.0 - pos - size + smoothing, 1.0 - uv);
+  return col.x * col.y;
+}
+
+float rect(vec2 uv, vec2 pos, vec2 size) {
+  return smooth_rect(uv, pos, size, 0.0);
+}
+
+float circle(in vec2 uv, in vec2 center, in float radius, in float smoothing) {
+	return 1.0 - smoothstep(radius - smoothing, radius, distance(center, uv));
+}
+
+const vec4 CROSSHAIR_COLOR = vec4(1.0, 0.0, 0.0, 0.2);
+const float CROSSHAIR_GAPSIZE = 0.03;
+
+void fragment() {
+	vec4 crosshair = vec4(0.0);
+	crosshair += circle(UV, vec2(0.5), 0.4, 0.01);
+	crosshair -= circle(UV, vec2(0.5), 0.3, 0.01);
+	
+	crosshair += rect(UV, vec2(0.5), vec2(CROSSHAIR_GAPSIZE, abs(sin(TIME)) * 0.1 + 0.1));
+	crosshair += rect(UV, vec2(0.5), vec2(abs(sin(TIME)) * 0.1 + 0.1, CROSSHAIR_GAPSIZE));
+	
+	COLOR = crosshair * CROSSHAIR_COLOR;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -17,6 +51,7 @@ collision_mask = 3
 script = ExtResource( 1 )
 head_path = NodePath("Head")
 cam_path = NodePath("Head/Camera")
+FOV_ADS = 5.0
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -51,6 +86,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+material = SubResource( 3 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -61,7 +97,7 @@ margin_right = 256.0
 margin_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.05, 0.05 )
+rect_scale = Vector2( 0.07, 0.07 )
 rect_pivot_offset = Vector2( 256, 256 )
 texture = ExtResource( 3 )
 stretch_mode = 6

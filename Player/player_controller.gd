@@ -7,6 +7,9 @@ export(float) var mouse_sensitivity = 12.0
 export(NodePath) var head_path
 export(NodePath) var cam_path
 export(float) var FOV = 80.0
+export(float) var FOV_ADS = 30.0
+export(float) var FOV_SWITCH_SPEED = 0.1
+
 var mouse_axis := Vector2()
 onready var head: Spatial = get_node(head_path)
 onready var cam: Camera = get_node(cam_path)
@@ -50,6 +53,10 @@ func _process(_delta: float) -> void:
 		animation_tree.set("parameters/conditions/shoot", Input.is_action_just_pressed("shoot"))
 	if $Head/ArmedArms.can_reload():
 		animation_tree.set("parameters/conditions/reload", Input.is_action_just_pressed("reload"))
+	var target_fov = FOV
+	if Input.is_action_pressed("ads"):
+		target_fov = FOV_ADS
+	cam.fov = lerp(cam.fov, target_fov, FOV_SWITCH_SPEED)
 
 
 # Called every physics tick. 'delta' is constant
