@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Player/ArmedArms.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Healthbar.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
 height = 2.18167
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 float smooth_rect(vec2 uv, vec2 pos, vec2 size, float smoothing) {
@@ -38,8 +39,89 @@ void fragment() {
 	COLOR = crosshair * CROSSHAIR_COLOR;
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+float plot(vec2 uv, float eqn) {
+  float lineWidth = 0.02;
+  float smoothing = 0.05;
+  // float smoothing = 0.0;
+  float g2 = 0.0;
+  g2 += smoothstep( eqn + lineWidth - smoothing, eqn + lineWidth, uv.y);
+  g2 += 1.0 - smoothstep(eqn - lineWidth - smoothing, eqn - lineWidth, uv.y);
+  g2 = 1.0 - g2;
+  return g2;
+}
+
+float plotx(vec2 uv, float eqn) {
+  float lineWidth = 0.3;
+  // float smoothing = 0.05;
+  float smoothing = 0.1;
+  float g2 = 0.0;
+  g2 += smoothstep( eqn + lineWidth - smoothing, eqn + lineWidth, uv.x);
+  g2 += 1.0 - smoothstep(eqn - lineWidth - smoothing, eqn - lineWidth, uv.x);
+  g2 = 1.0 - g2;
+  return g2;
+}
+
+float smooth_rect(vec2 uv, vec2 pos, vec2 size, float smoothing) {
+  vec2 col = smoothstep(pos - size, pos - size + smoothing, uv);
+  col *= smoothstep(1.0 - pos - size, 1.0 - pos - size + smoothing, 1.0 - uv);
+  return col.x * col.y;
+}
+
+float rect(vec2 uv, vec2 pos, vec2 size) {
+  return smooth_rect(uv, pos, size, 0.0);
+}
+
+float wire_rect(vec2 uv, vec2 pos, vec2 size, float line_width) {
+  return rect(uv, pos, size) - rect(uv, pos, size - line_width);
+}
+
+float circle(vec2 uv, vec2 center, float radius, float smoothing) {
+  return 1.0 - smoothstep(radius - smoothing, radius, distance(center, uv));
+}
+
+uniform float health;
+
+void fragment() {
+  vec2 uv = UV;
+  float x = uv.x; float y = uv.y;
+
+  float max_health = 100.0;
+
+  vec4 color = vec4(0.0);
+
+  float hp = clamp(0.0, 1.0, health / max_health);
+
+  vec4 healthbar_col = vec4(1.0 - hp, hp, 0.0, 1.0) * (1.0 - step(hp, uv.x));
+
+  color += healthbar_col;
+
+  x -= hp * 0.5;
+  x *= 5.0;
+
+  float eqn = sin(70.0 * x)/(5.0 * 70.0 * x) + sin(70.0 * x)/7.0;
+  float mask = step(0.992, 1.0 - pow(x, 2.0));
+  eqn *= mask;
+  float glow = plotx(uv, mod((TIME / hp) - x, 8.0));
+  eqn *= 1.5;
+  eqn += 0.5;
+
+  color.xyz *= abs(pow(y + 0.1, 2.0));
+  color.xyz *= abs(sin(TIME / hp)) / 5.0 + 0.8;
+  color += plot(uv, eqn) * glow * healthbar_col;
+  color *= smooth_rect(uv, vec2(0.5), vec2(0.5), 0.2);
+
+  COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/health = null
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -112,7 +194,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-material = SubResource( 6 )
+material = SubResource( 3 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -121,3 +203,17 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+
+[node name="Healthbar" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource( 5 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.595
+margin_top = 30.0
+margin_right = 199.405
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 200, 0 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

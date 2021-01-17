@@ -43,6 +43,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	cam.fov = FOV
 	animation_playback.start("IdleAnimation")
+	GameControl.set_healthbar($CanvasLayer/Control/Healthbar)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame

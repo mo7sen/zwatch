@@ -14,6 +14,8 @@ var enemies_alive
 
 var spawner_node
 
+var Tower = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	score = 0
@@ -32,7 +34,7 @@ func decr_score(val):
 
 func enemy_killed():
 	enemies_alive -= 1
-	score += 1
+	incr_score(1)
 	if enemies_alive <= 0:
 		yield(get_tree().create_timer(10), "timeout")
 		spawn_wave()
@@ -47,6 +49,13 @@ func spawn_wave():
 
 func reg_bullet():
 	wave_size += 1
+
+func set_tower(tower):
+	Tower = tower
+
+func set_healthbar(bar):
+	if Tower:
+		Tower.set_healthbar(bar)
 
 func lose():
 	pass

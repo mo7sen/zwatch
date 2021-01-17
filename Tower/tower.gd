@@ -3,6 +3,8 @@ extends Spatial
 const MAX_HEALTH = 100
 var current_health = MAX_HEALTH
 
+var healthbar = null
+
 func attack(dmg):
 	current_health -= dmg
 	if current_health <= 0:
@@ -21,3 +23,10 @@ func _on_Area_body_exited(body):
 
 func _physics_process(delta):
 	print("Tower Health: " + str(current_health))
+	healthbar.set_value(current_health)
+
+func _ready():
+	GameControl.set_tower(self)
+
+func set_healthbar(bar):
+	healthbar = bar

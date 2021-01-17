@@ -20,16 +20,16 @@ agent/height = 0.5
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.858824, 0.772549, 0.772549, 1 )
 
-[sub_resource type="CylinderShape" id=7]
+[sub_resource type="CylinderShape" id=5]
 radius = 8.40253
 
-[sub_resource type="Curve3D" id=5]
+[sub_resource type="Curve3D" id=6]
 _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -214.062, 10.479, -244.637, 0, 0, 0, 0, 0, 0, -114.583, 11.5053, -301.913, 0, 0, 0, 0, 0, 0, 5.99843, 9.45259, -323.015, 0, 0, 0, 0, 0, 0, 117.536, 13.8303, -304.928, 0, 0, 0, 0, 0, 0, 210.987, 12.5314, -256.695, 0, 0, 0, 0, 0, 0, 279.52, 10.3601, -190.244, 0, 0, 0, 0, 0, 0, 330.767, 10.9147, -102.823, 0, 0, 0, 0, 0, 0, 369.956, 10.9147, -9.37215, 0, 0, 0, 0, 0, 0, 345.839, 10.9147, 93.1219, 0, 0, 0, 0, 0, 0, 288.563, 10.9147, 210.689, 0, 0, 0, 0, 0, 0, 204.156, 10.479, 280.023, 0, 0, 0, 0, 0, 0, 80.5607, 10.479, 364.43, 0, 0, 0, 0, 0, 0, -49.0641, 11.5053, 352.372, 0, 0, 0, 0, 0, 0, -166.631, 10.479, 304.139, 0, 0, 0, 0, 0, 0, -272.14, 11.5053, 201.645, 0, 0, 0, 0, 0, 0, -338.459, 9.96162, 75.0347, 0, 0, 0, 0, 0, 0, -340.673, 8.9355, -69.7945, 0, 0, 0, 0, 0, 0, -289.426, 8.9355, -178.318, 0, 0, 0, 0, 0, 0, -214.062, 10.479, -244.637 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=7]
 fog_color = Color( 0.156863, 0, 0, 1 )
 dof_blur_far_distance = 94.33
 glow_bloom = 0.5
@@ -547,7 +547,7 @@ omni_range = 51.6646
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.13718, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/Tower/Area"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 0.934024, -0.357211, 0, 0.357211, 0.934024, 0, 35.8111, 0 )
@@ -563,12 +563,12 @@ autostart = true
 
 [node name="SpawnPath" type="Path" parent="Spawner"]
 transform = Transform( 0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, -1.16484, -1.02632, -3.41154 )
-curve = SubResource( 5 )
+curve = SubResource( 6 )
 
 [node name="SpawnLocation" type="PathFollow" parent="Spawner/SpawnPath"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = SubResource( 7 )
 [connection signal="body_entered" from="NavigationMeshInstance/Tower/Area" to="NavigationMeshInstance/Tower" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="NavigationMeshInstance/Tower/Area" to="NavigationMeshInstance/Tower" method="_on_Area_body_exited"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
