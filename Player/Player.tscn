@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Player/ArmedArms.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
 height = 1.5
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
 
 float smooth_rect(vec2 uv, vec2 pos, vec2 size, float smoothing) {
@@ -37,11 +36,10 @@ void fragment() {
 	crosshair += rect(UV, vec2(0.5), vec2(abs(sin(TIME)) * 0.1 + 0.1, CROSSHAIR_GAPSIZE));
 	
 	COLOR = crosshair * CROSSHAIR_COLOR;
-}
-"
+}"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -85,26 +83,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-material = SubResource( 3 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -256.0
-margin_right = 256.0
-margin_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_scale = Vector2( 0.07, 0.07 )
-rect_pivot_offset = Vector2( 256, 256 )
-texture = ExtResource( 3 )
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -131,3 +109,14 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource( 6 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
