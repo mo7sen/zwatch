@@ -49,8 +49,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	move_axis.x = Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")
 	move_axis.y = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	if $Head/ArmedArms.can_shoot():
-		animation_tree.set("parameters/conditions/shoot", Input.is_action_just_pressed("shoot"))
+	
+	if Input.is_action_just_pressed("shoot") and $Head/ArmedArms.can_shoot():
+		animation_tree.set("parameters/conditions/shoot", true)
+	else:
+		animation_tree.set("parameters/conditions/shoot", false)
+		
 	if $Head/ArmedArms.can_reload():
 		animation_tree.set("parameters/conditions/reload", Input.is_action_just_pressed("reload"))
 	var target_fov = FOV

@@ -94,7 +94,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 42.9891, 1.87035, 44.4903 )
+extents = Vector3( 41.6469, 1.87035, 41.9258 )
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 1, 1.12912, 39.5476 )

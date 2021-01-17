@@ -34,7 +34,6 @@ func enemy_killed():
 	enemies_alive -= 1
 	score += 1
 	if enemies_alive <= 0:
-		var timer = Timer.new()
 		yield(get_tree().create_timer(10), "timeout")
 		spawn_wave()
 
@@ -49,6 +48,8 @@ func spawn_wave():
 func reg_bullet():
 	wave_size += 1
 
+func lose():
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

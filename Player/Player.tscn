@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
-height = 1.5
+height = 2.18167
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -44,6 +44,7 @@ shader = SubResource( 5 )
 [node name="Player" type="KinematicBody" groups=[
 "Player",
 ]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71402, 0 )
 collision_layer = 2
 collision_mask = 3
 script = ExtResource( 1 )

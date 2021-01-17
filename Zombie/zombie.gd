@@ -21,6 +21,9 @@ var path_node = 0
 
 export var hit_points = 30;
 
+const ATTACK_DAMAGE = 10
+var attack_target = null
+
 func _ready():
 	orientation.origin = Vector3()
 	animation_playback.start("Walking")
@@ -49,10 +52,6 @@ func _physics_process(delta):
 		
 		if direction3.length() < 15:
 			path_node += 1
-	else:
-		attack()
-		set_direction(Vector2(0,0))
-		
 func set_target(t):
 	path = navigation.get_simple_path(global_transform.origin, t)
 	
@@ -76,5 +75,9 @@ func die():
 	gravity = Vector3(0,0,0)
 
 func attack():
-	animation_tree.set("parameters/conditions/isWalking", false)
-	animation_tree.set("parameters/conditions/isAttacking", true)
+	attack_target.attack(ATTACK_DAMAGE)
+
+func set_attack(state, obj):
+	animation_tree.set("parameters/conditions/isWalking", !state)
+	animation_tree.set("parameters/conditions/isAttacking", state)
+	attack_target = obj
