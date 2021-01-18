@@ -29,6 +29,7 @@ func can_reload():
 	return current_ammo < MAG_SIZE
 
 func fire():
+	AudioManager.play("res://assets/audio/revolver_shot.wav")
 	var bullet_clone = bullet.instance()
 	var root = get_tree().root.get_children()[0]
 	root.add_child(bullet_clone)

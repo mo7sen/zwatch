@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameControl="*res://GameControl.gd"
+AudioManager="*res://AudioManager.gd"
 
 [display]
 
