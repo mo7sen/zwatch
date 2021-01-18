@@ -1,10 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.629944
 margin_right = 0.629883
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,22 +25,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 500.0
-margin_top = 297.341
-margin_right = 558.432
-margin_bottom = 317.341
+[node name="NewGame Button" type="Button" parent="."]
+margin_left = 400.0
+margin_top = 300.0
+margin_right = 600.0
+margin_bottom = 400.0
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button2" type="Button" parent="."]
-margin_left = 337.172
-margin_top = 418.112
-margin_right = 687.172
-margin_bottom = 498.112
+[node name="QuitGame Butoon" type="Button" parent="."]
+margin_left = 400.0
+margin_top = 450.0
+margin_right = 600.0
+margin_bottom = 550.0
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="NewGame Button" to="." method="_on_NewGame_Button_pressed"]
+[connection signal="pressed" from="QuitGame Butoon" to="." method="_on_QuitGame_Butoon_pressed"]

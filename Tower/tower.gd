@@ -16,12 +16,12 @@ func _on_Area_body_entered(body):
 		body.set_attack(true, self)
 
 
-func _on_Area_body_exited(body):
+func _on_Area_body_exited(_body):
 #	if body.has_method("set_attack"):
 #		body.set_attack(false, null)
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	print("Tower Health: " + str(current_health))
 	healthbar.set_value(current_health)
 
