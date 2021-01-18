@@ -15,10 +15,10 @@ bullets you use to clear a wave, the more zombies there'll be in the next one.
 
 ## Progress
 - [x] Animated Player Character
-- [ ] Animated Zombies
+- [x] Animated Zombies
 - [ ] Resource Crates
-- [ ] Map
-- [ ] Sound clips
+- [x] Map
+- [x] Sound clips
 - [ ] UI/Menus
 - [ ] **Resource buffs/debuffs?**
 
