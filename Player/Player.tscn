@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Player/ArmedArms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Healthbar.gd" type="Script" id=3]
 [ext_resource path="res://Player/Crosshair.gd" type="Script" id=4]
 [ext_resource path="res://Player/Crosshair1.shader" type="Shader" id=5]
+[ext_resource path="res://Player/endGame Panel.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
@@ -133,6 +134,8 @@ ammo_label_path = NodePath("../../CanvasLayer/Control/Panel/AmmoLabel")
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.793701
+margin_right = 0.793701
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -140,8 +143,9 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -50.0
-margin_right = 100.0
+margin_top = -30.0
+margin_right = 77.0
+margin_bottom = 9.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 0, 50 )
 __meta__ = {
@@ -149,9 +153,9 @@ __meta__ = {
 }
 
 [node name="AmmoLabel" type="Label" parent="CanvasLayer/Control/Panel"]
-anchor_left = 0.5
+anchor_left = 0.25
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.25
 anchor_bottom = 0.5
 margin_left = -20.0
 margin_top = -20.0
@@ -193,3 +197,66 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Score" type="Label" parent="CanvasLayer/Control"]
+margin_left = 7.14331
+margin_top = 5.5559
+margin_right = 93.1433
+margin_bottom = 30.5559
+rect_scale = Vector2( 2, 2 )
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="endGamePanel" type="Panel" parent="CanvasLayer/Control"]
+margin_left = 252.696
+margin_top = 87.6646
+margin_right = 809.696
+margin_bottom = 479.665
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="CanvasLayer/Control/endGamePanel"]
+margin_left = 141.773
+margin_top = 52.8204
+margin_right = 231.773
+margin_bottom = 77.8204
+rect_scale = Vector2( 3, 3 )
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeadShootScore" type="Label" parent="CanvasLayer/Control/endGamePanel"]
+margin_left = 71.1336
+margin_top = 167.113
+margin_right = 157.134
+margin_bottom = 192.113
+text = "Head Shoots: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesKilledScore" type="Label" parent="CanvasLayer/Control/endGamePanel"]
+margin_left = 71.9273
+margin_top = 228.228
+margin_right = 233.927
+margin_bottom = 253.228
+text = "Enemies Killed: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndButton" type="Button" parent="CanvasLayer/Control/endGamePanel"]
+margin_left = 176.556
+margin_top = 282.157
+margin_right = 387.556
+margin_bottom = 348.157
+text = "End"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Control/endGamePanel/EndButton" to="CanvasLayer/Control/endGamePanel" method="_on_EndButton_pressed"]

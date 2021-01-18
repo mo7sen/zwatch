@@ -46,7 +46,6 @@ func _ready() -> void:
 	animation_playback.start("IdleAnimation")
 	GameControl.set_healthbar($CanvasLayer/Control/Healthbar)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(_delta: float) -> void:
 	move_axis.x = Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")

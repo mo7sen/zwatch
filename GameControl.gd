@@ -1,11 +1,8 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var score
+var enemies_killed
+var headshoot_score
 
 var wave_size
 var wave_number
@@ -16,9 +13,14 @@ var spawner_node
 
 var Tower = null
 
+var endPanel
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	score = 0
+	enemies_killed = 0
+	headshoot_score = 0
+	
 	wave_size = 1
 	wave_number = 1
 	enemies_alive = wave_size
@@ -28,11 +30,15 @@ func set_spawner(spawner):
 
 func incr_score(val):
 	score += val
+	
+func incr_headshootscore(val):
+	headshoot_score += val	
 
 func decr_score(val):
 	score -= val
 
 func enemy_killed():
+	enemies_killed +=1
 	enemies_alive -= 1
 	incr_score(1)
 	if enemies_alive <= 0:
@@ -46,7 +52,6 @@ func spawn_wave():
 	enemies_alive = wave_size
 	wave_size = 1
 
-
 func reg_bullet():
 	wave_size += 1
 
@@ -58,7 +63,5 @@ func set_healthbar(bar):
 		Tower.set_healthbar(bar)
 
 func lose():
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	endPanel.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
