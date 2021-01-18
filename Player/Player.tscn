@@ -1,48 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Player/ArmedArms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Healthbar.gd" type="Script" id=3]
+[ext_resource path="res://Player/Crosshair.gd" type="Script" id=4]
+[ext_resource path="res://Player/Crosshair1.shader" type="Shader" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
 height = 2.18167
 
-[sub_resource type="Shader" id=2]
-code = "shader_type canvas_item;
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+shader_param/crosshair_color = null
 
-float smooth_rect(vec2 uv, vec2 pos, vec2 size, float smoothing) {
-  vec2 col = smoothstep(pos - size, pos - size + smoothing, uv);
-  col *= smoothstep(1.0 - pos - size, 1.0 - pos - size + smoothing, 1.0 - uv);
-  return col.x * col.y;
-}
-
-float rect(vec2 uv, vec2 pos, vec2 size) {
-  return smooth_rect(uv, pos, size, 0.0);
-}
-
-float circle(in vec2 uv, in vec2 center, in float radius, in float smoothing) {
-	return 1.0 - smoothstep(radius - smoothing, radius, distance(center, uv));
-}
-
-const vec4 CROSSHAIR_COLOR = vec4(1.0, 0.0, 0.0, 0.2);
-const float CROSSHAIR_GAPSIZE = 0.03;
-
-void fragment() {
-	vec4 crosshair = vec4(0.0);
-	crosshair += circle(UV, vec2(0.5), 0.4, 0.01);
-	crosshair -= circle(UV, vec2(0.5), 0.3, 0.01);
-	
-	crosshair += rect(UV, vec2(0.5), vec2(CROSSHAIR_GAPSIZE, abs(sin(TIME)) * 0.1 + 0.1));
-	crosshair += rect(UV, vec2(0.5), vec2(abs(sin(TIME)) * 0.1 + 0.1, CROSSHAIR_GAPSIZE));
-	
-	COLOR = crosshair * CROSSHAIR_COLOR;
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
-
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 float plot(vec2 uv, float eqn) {
@@ -119,8 +91,8 @@ void fragment() {
   COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/health = null
 
 [node name="Player" type="KinematicBody" groups=[
@@ -132,7 +104,6 @@ collision_mask = 3
 script = ExtResource( 1 )
 head_path = NodePath("Head")
 cam_path = NodePath("Head/Camera")
-FOV_ADS = 5.0
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -193,19 +164,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-material = SubResource( 3 )
+[node name="Crosshair" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource( 2 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+crosshair_color = Color( 1, 0, 0, 0.572549 )
 
 [node name="Healthbar" type="ColorRect" parent="CanvasLayer/Control"]
-material = SubResource( 5 )
+material = SubResource( 4 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -200.595

@@ -22,7 +22,6 @@ func _on_Area_body_exited(_body):
 	pass
 
 func _physics_process(_delta):
-	print("Tower Health: " + str(current_health))
 	healthbar.set_value(current_health)
 
 func _ready():

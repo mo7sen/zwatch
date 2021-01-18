@@ -10,6 +10,7 @@ export(float) var FOV = 80.0
 export(float) var FOV_ADS = 30.0
 export(float) var FOV_SWITCH_SPEED = 0.1
 
+
 var mouse_axis := Vector2()
 onready var head: Spatial = get_node(head_path)
 onready var cam: Camera = get_node(cam_path)
@@ -61,7 +62,7 @@ func _process(_delta: float) -> void:
 	var target_fov = FOV
 	if Input.is_action_pressed("ads"):
 		target_fov = FOV_ADS
-	cam.fov = lerp(cam.fov, target_fov, FOV_SWITCH_SPEED)
+	cam.set_fov(lerp(cam.fov, target_fov, FOV_SWITCH_SPEED))
 
 
 # Called every physics tick. 'delta' is constant
@@ -109,11 +110,9 @@ func walk(delta: float) -> void:
 	var _speed: int
 	if (Input.is_action_pressed("move_sprint") and can_sprint() and move_axis.x >= 0.5):
 		_speed = sprint_speed
-		cam.set_fov(lerp(cam.fov, FOV * 1.05, delta * 8))
 		sprinting = true
 	else:
 		_speed = walk_speed
-		cam.set_fov(lerp(cam.fov, FOV, delta * 8))
 		sprinting = false
 	
 	# Acceleration and Deacceleration
