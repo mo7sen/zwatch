@@ -5,8 +5,10 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.629944
-margin_right = 0.629883
+margin_left = 1.88983
+margin_top = -0.629944
+margin_right = 1.88977
+margin_bottom = -0.629944
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,9 +29,9 @@ __meta__ = {
 
 [node name="NewGame Button" type="Button" parent="."]
 margin_left = 400.0
-margin_top = 300.0
+margin_top = 299.37
 margin_right = 600.0
-margin_bottom = 400.0
+margin_bottom = 399.37
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,9 +39,9 @@ __meta__ = {
 
 [node name="QuitGame Butoon" type="Button" parent="."]
 margin_left = 400.0
-margin_top = 450.0
+margin_top = 450.63
 margin_right = 600.0
-margin_bottom = 550.0
+margin_bottom = 550.63
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false

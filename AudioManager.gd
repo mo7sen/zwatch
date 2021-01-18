@@ -20,7 +20,7 @@ func _on_stream_finished(stream):
 func play(sound_path):
 	queue.append(sound_path)
 
-func _process(delta):
+func _process(_delta):
 	if not queue.empty() and not available.empty():
 		available[0].stream = load(queue.pop_front())
 		available[0].play()
