@@ -18,3 +18,4 @@ func _ready():
 func bullet_hit(dmg):
 	get_owner().bullet_hit(dmg * 2)
 	GameControl.incr_score(1)
+	GameControl.incr_headshotcount(1)

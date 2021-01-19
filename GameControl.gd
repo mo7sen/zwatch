@@ -2,7 +2,7 @@ extends Node
 
 var score
 var enemies_killed
-var headshoot_score
+var headshot_count
 
 var wave_size
 var wave_number
@@ -19,7 +19,7 @@ var endPanel
 func _ready():
 	score = 0
 	enemies_killed = 0
-	headshoot_score = 0
+	headshot_count = 0
 	
 	wave_size = 1
 	wave_number = 1
@@ -31,8 +31,8 @@ func set_spawner(spawner):
 func incr_score(val):
 	score += val
 	
-func incr_headshootscore(val):
-	headshoot_score += val	
+func incr_headshotcount(val):
+	headshot_count += val
 
 func decr_score(val):
 	score -= val

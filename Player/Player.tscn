@@ -232,12 +232,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HeadShootScore" type="Label" parent="CanvasLayer/Control/endGamePanel"]
+[node name="HeadShotScore" type="Label" parent="CanvasLayer/Control/endGamePanel"]
 margin_left = 71.1336
 margin_top = 167.113
 margin_right = 157.134
 margin_bottom = 192.113
-text = "Head Shoots: 0"
+text = "Headshots: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }

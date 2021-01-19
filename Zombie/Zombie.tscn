@@ -4626,7 +4626,7 @@ bones/76/enabled = true
 bones/76/bound_children = [ NodePath("BoneAttachment 13") ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.762798, 0.43459, -0.478819, 0.443076, -0.890604, -0.10248, -0.470974, -0.133981, -0.871912, 14.7246, 11.3964, 166.103 )
+transform = Transform( 0.859809, -0.102594, 0.500201, 0.439545, -0.349822, -0.827299, 0.259858, 0.931179, -0.255686, -18.8412, 141.063, 9.15516 )
 bone_name = "head"
 
 [node name="End001" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment"]
@@ -4642,84 +4642,84 @@ transform = Transform( 100, 0, -9.53674e-06, -3.8147e-06, 100, 2.28882e-05, -3.8
 shape = SubResource( 19 )
 
 [node name="BoneAttachment 2" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( -0.524362, 0.737496, -0.425606, 0.835046, 0.347624, -0.426441, -0.166548, -0.57901, -0.798127, 48.8994, 5.0703, 144.413 )
+transform = Transform( 0.610297, 0.733813, 0.298416, 0.731719, -0.66653, 0.142556, 0.303513, 0.131357, -0.943728, 21.8438, 110.901, 56.6116 )
 bone_name = "left_hand_thumb_3"
 
 [node name="LeftHandThumb4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 2"]
 transform = Transform( -1.19209e-07, 2.38419e-07, -1, 1, 1.19209e-07, -1.19209e-07, 1.19209e-07, -1, -2.38419e-07, -1.22554, 2.12268, -1.22555 )
 
 [node name="BoneAttachment 3" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.185067, 0.832705, 0.521869, 0.981786, -0.133471, -0.135197, -0.0429249, 0.537386, -0.842242, 57.952, 6.93748, 145.642 )
+transform = Transform( 0.208243, 0.525296, 0.825043, 0.655674, -0.7009, 0.280762, 0.725756, 0.482493, -0.490382, 32.1729, 109.76, 60.6989 )
 bone_name = "left_hand_middle_3"
 
 [node name="LeftHandMiddle4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 3"]
 transform = Transform( 0, -1.10269e-06, -1, 1, 0, -2.98023e-08, -5.96046e-08, -1, 1.13249e-06, -1.33514e-05, 1.90001, 3.8147e-06 )
 
 [node name="BoneAttachment 4" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( -0.0569269, 0.867304, 0.494508, 0.979399, 0.144627, -0.140913, -0.193734, 0.476301, -0.857671, 56.5547, 9.03719, 146.635 )
+transform = Transform( 0.208244, 0.525297, 0.825042, 0.655673, -0.700901, 0.280762, 0.725757, 0.482492, -0.490382, 29.964, 109.369, 61.3792 )
 bone_name = "left_hand_index_3"
 
 [node name="LeftHandIndex4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 4"]
 transform = Transform( -1.19209e-07, -5.96046e-08, -1, 1, 2.38419e-07, -5.96046e-08, 2.98023e-07, -1, 0, 7.62939e-06, 1.79998, -9.53674e-06 )
 
 [node name="BoneAttachment 5" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.168596, 0.890894, 0.421756, 0.979868, -0.105076, -0.169746, -0.106909, 0.441886, -0.890676, 59.4209, 6.26179, 142.952 )
+transform = Transform( 0.208244, 0.525296, 0.825042, 0.655673, -0.700901, 0.280761, 0.725756, 0.482493, -0.490382, 33.8224, 110.654, 59.2501 )
 bone_name = "left_hand_ring_3"
 
 [node name="LeftHandRing4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 5"]
 transform = Transform( -4.76837e-07, 1.78814e-06, -1, 1, -2.86102e-06, -3.57628e-07, -2.83122e-06, -1, -1.90735e-06, -2.67029e-05, 1.6, 1.90735e-06 )
 
 [node name="BoneAttachment 6" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( -0.238022, 0.905857, 0.350378, 0.949422, 0.293066, -0.112716, -0.204789, 0.305829, -0.929799, 59.0822, 6.52306, 139.747 )
+transform = Transform( 0.208243, 0.525296, 0.825042, 0.655674, -0.7009, 0.280761, 0.725755, 0.482494, -0.490382, 34.1983, 113.196, 56.4866 )
 bone_name = "left_hand_pinky_3"
 
 [node name="LeftHandPinky4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 6"]
 transform = Transform( 3.57628e-07, 2.38419e-07, -1, 1, 3.57628e-07, 3.57628e-07, 3.57628e-07, -1, -2.38419e-07, -3.8147e-06, 2.5, 5.72205e-06 )
 
 [node name="BoneAttachment 7" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( -0.869841, -0.306328, 0.386695, -0.241441, -0.419216, -0.875191, 0.430206, -0.854644, 0.290691, -45.79, 3.4413, 127.563 )
+transform = Transform( -0.366193, 0.536259, 0.760476, 0.497447, 0.80348, -0.327049, -0.786414, 0.258533, -0.560989, -3.72715, 132.92, 50.4588 )
 bone_name = "right_hand_thumb_3"
 
 [node name="RightHandThumb4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 7"]
 transform = Transform( -1.19209e-07, 5.96046e-08, -1, -1, 2.38419e-07, 5.96046e-08, 2.98023e-07, 1, 0, -1.15445, 1.99955, 1.15444 )
 
 [node name="BoneAttachment 8" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.391923, 0.908538, 0.144739, 0.170121, 0.0830421, -0.981916, -0.904129, 0.40946, -0.122016, -48.5283, 6.11864, 121.308 )
+transform = Transform( 0.104666, 0.728834, 0.676639, 0.969575, 0.0766026, -0.232491, -0.221281, 0.680387, -0.698643, -0.567599, 137.547, 58.8179 )
 bone_name = "right_hand_index_3"
 
 [node name="RightHandIndex4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 8"]
 transform = Transform( 3.57628e-07, 8.9407e-07, -1, -1, -8.34465e-07, -2.98023e-07, -8.9407e-07, 1, 9.53674e-07, 4.76837e-06, 1.8, -9.53674e-07 )
 
 [node name="BoneAttachment 9" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.216554, 0.966506, 0.137715, 0.144939, 0.10767, -0.983563, -0.965448, 0.232956, -0.116768, -49.3754, 8.00609, 120.682 )
+transform = Transform( 0.104666, 0.728834, 0.676639, 0.969575, 0.0766026, -0.232491, -0.221281, 0.680387, -0.698643, -1.50008, 138.348, 60.9151 )
 bone_name = "right_hand_middle_3"
 
 [node name="RightHandMiddle4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 9"]
 transform = Transform( -8.34465e-07, -8.34465e-07, -1, -1, 4.17233e-07, 8.04663e-07, 4.47035e-07, 1, -9.53674e-07, 5.72205e-06, 1.90003, -4.76837e-06 )
 
 [node name="BoneAttachment 10" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.247705, 0.943445, 0.220338, 0.242506, 0.159809, -0.956895, -0.937991, 0.290462, -0.189206, -46.8481, 11.5531, 121.649 )
+transform = Transform( 0.104666, 0.728834, 0.676639, 0.969575, 0.0766023, -0.232491, -0.221281, 0.680387, -0.698643, -3.75262, 138.861, 61.9388 )
 bone_name = "right_hand_ring_3"
 
 [node name="RightHandRing4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 10"]
 transform = Transform( -1.19209e-07, -1.19209e-07, -1, -1, 1.78814e-07, 8.9407e-08, 2.08616e-07, 1, -2.38419e-07, 1.43051e-05, 1.6, 5.72205e-06 )
 
 [node name="BoneAttachment 11" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.503744, 0.845077, 0.179111, 0.373905, -0.0263881, -0.92709, -0.778738, 0.533988, -0.329272, -49.6316, 14.1028, 123.787 )
+transform = Transform( 0.104667, 0.728834, 0.67664, 0.969575, 0.0766016, -0.232491, -0.22128, 0.680389, -0.698643, -7.24808, 138.708, 61.5256 )
 bone_name = "right_hand_pinky_3"
 
 [node name="RightHandPinky4" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 11"]
 transform = Transform( -1.19209e-07, 0, -1, -1, -1.19209e-07, 1.19209e-07, -1.19209e-07, 1, 0, 3.14713e-05, 2.50001, -7.62939e-06 )
 
 [node name="BoneAttachment 12" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( -0.0361814, -0.50102, -0.864679, 0.998631, -0.0508442, -0.0123261, -0.0377879, -0.863942, 0.502172, 18.0763, 5.14317, 36.6825 )
+transform = Transform( 0.982236, -0.08569, 0.166945, -0.0248901, -0.941283, -0.336702, 0.185995, 0.326564, -0.926694, 16.3363, 6.19032, 61.255 )
 bone_name = "left_toe_base"
 
 [node name="End002" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 12"]
 transform = Transform( 1, -1.76792e-08, -1.47164e-08, 1.47164e-08, -1.19209e-07, 1, -1.76792e-08, -1, -1.19209e-07, -1.90735e-06, 1.18725e-05, -11.0324 )
 
 [node name="BoneAttachment 13" type="BoneAttachment" parent="ZombieModel/root/Skeleton"]
-transform = Transform( 0.381848, -0.533848, 0.75445, 0.279973, 0.844765, 0.456054, -0.880796, 0.0370827, 0.472038, -88.3407, 5.87093, 43.6854 )
+transform = Transform( 0.851407, -0.0664416, 0.520278, -0.127537, -0.988397, 0.082485, 0.508762, -0.136583, -0.850002, -24.6866, 2.94329, -32.4412 )
 bone_name = "right_toe_base"
 
 [node name="End" type="Spatial" parent="ZombieModel/root/Skeleton/BoneAttachment 13"]
