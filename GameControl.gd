@@ -1,5 +1,7 @@
 extends Node
 
+var gameUI
+
 var score
 var enemies_killed
 var headshot_count
@@ -13,9 +15,6 @@ var spawner_node
 
 var Tower = null
 
-var endPanel
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	score = 0
 	enemies_killed = 0
@@ -63,5 +62,6 @@ func set_healthbar(bar):
 		Tower.set_healthbar(bar)
 
 func lose():
-	endPanel.show()
+	get_tree().paused = true
+	gameUI.showEndGamePanel()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

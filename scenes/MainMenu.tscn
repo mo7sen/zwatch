@@ -3,6 +3,7 @@
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.88983
@@ -15,10 +16,10 @@ __meta__ = {
 }
 
 [node name="Game Name" type="Label" parent="."]
-margin_left = 0.630005
-margin_top = 1.37912
-margin_right = 1000.63
-margin_bottom = 150.63
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1001.0
+margin_bottom = 197.0
 text = "zwatch"
 align = 1
 valign = 1
@@ -27,24 +28,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame Button" type="Button" parent="."]
-margin_left = 400.0
-margin_top = 299.37
-margin_right = 600.0
-margin_bottom = 399.37
+[node name="NewGameButton" type="Button" parent="."]
+margin_left = 350.0
+margin_top = 210.0
+margin_right = 650.0
+margin_bottom = 310.0
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuitGame Butoon" type="Button" parent="."]
-margin_left = 400.0
-margin_top = 450.63
-margin_right = 600.0
-margin_bottom = 550.63
+[node name="SettingsButton" type="Button" parent="."]
+margin_left = 350.891
+margin_top = 340.0
+margin_right = 650.891
+margin_bottom = 440.0
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGameButoon" type="Button" parent="."]
+margin_left = 350.0
+margin_top = 470.0
+margin_right = 650.0
+margin_bottom = 570.0
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="NewGame Button" to="." method="_on_NewGame_Button_button_down"]
-[connection signal="pressed" from="QuitGame Butoon" to="." method="_on_QuitGame_Butoon_pressed"]
+
+[node name="SettingsPanel" type="Panel" parent="."]
+pause_mode = 2
+margin_left = 252.696
+margin_top = 87.6646
+margin_right = 809.696
+margin_bottom = 479.665
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="SettingsPanel"]
+margin_left = 2.82841
+margin_top = -1.41422
+margin_right = 187.828
+margin_bottom = 38.5858
+rect_scale = Vector2( 3, 3 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DoneButton" type="Button" parent="SettingsPanel"]
+margin_left = 175.0
+margin_top = 320.0
+margin_right = 375.0
+margin_bottom = 370.0
+text = "Done"
+[connection signal="pressed" from="NewGameButton" to="." method="_on_NewGame_Button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="QuitGameButoon" to="." method="_on_QuitGame_Butoon_pressed"]
+[connection signal="pressed" from="SettingsPanel/DoneButton" to="." method="_on_DoneButton_pressed"]
