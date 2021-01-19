@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tower/tower.tscn" type="PackedScene" id=2]
@@ -30,12 +30,38 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[sub_resource type="Environment" id=7]
-ambient_light_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
-fog_color = Color( 0.156863, 0, 0, 1 )
-dof_blur_far_distance = 94.33
-glow_bloom = 0.5
-glow_blend_mode = 0
+[sub_resource type="ProceduralSky" id=7]
+radiance_size = 0
+sky_top_color = Color( 0.00202179, 0.0676024, 0.103516, 1 )
+sky_horizon_color = Color( 0, 0, 0, 1 )
+sky_curve = 1.44
+ground_horizon_color = Color( 0.211765, 0.117647, 0.0352941, 1 )
+sun_color = Color( 0.464844, 0.212448, 0.212448, 1 )
+sun_curve = 0.00398297
+
+[sub_resource type="Environment" id=8]
+background_mode = 1
+background_sky = SubResource( 7 )
+fog_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+fog_depth_begin = 40.0
+auto_exposure_scale = 0.06
+ssao_radius = 12.24
+ssao_quality = 2
+dof_blur_far_distance = 80.0
+dof_blur_far_quality = 0
+glow_intensity = 2.68
+glow_bloom = 0.21
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_brightness = 0.83
+adjustment_contrast = 1.44
+adjustment_saturation = 0.01
+
+[sub_resource type="BakedLightmapData" id=9]
+bounds = AABB( -147.399, -21.5601, -148.367, 294.798, 43.1202, 296.734 )
+cell_space_transform = Transform( 3.125, 0, 0, 0, 3.125, 0, 0, 0, 3.125, 460.622, 67.3753, 463.647 )
+cell_subdiv = 11
+octree = PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 )
 
 [node name="World" type="Navigation"]
 script = ExtResource( 7 )
@@ -462,8 +488,13 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -11.9184, 0 )
 script = ExtResource( 6 )
 
 [node name="OmniLight" type="OmniLight" parent="NavigationMeshInstance/Tower"]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 20, 0 )
-omni_range = 50.0
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 20.5368, 0 )
+light_color = Color( 1, 0.858824, 0.729412, 1 )
+light_energy = 2.0
+light_specular = 1.0
+light_bake_mode = 2
+shadow_enabled = true
+omni_range = 14.306
 
 [node name="Area" type="Area" parent="NavigationMeshInstance/Tower"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.13718, 0 )
@@ -471,28 +502,57 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.13718, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/Tower/Area"]
 shape = SubResource( 5 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="NavigationMeshInstance/Tower/Area"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.63045, 0, -1.31955 )
-shape = SubResource( 5 )
+[node name="SpotLight" type="SpotLight" parent="NavigationMeshInstance/Tower"]
+transform = Transform( 0.274407, 0.168581, -0.382467, 0.290979, 0.2514, 0.319577, 0.300054, -0.397968, 0.0398646, 2.8753, 20.6581, 0 )
+light_color = Color( 1, 0.858824, 0.729412, 1 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_bias = 0.2
+spot_range = 200.0
+spot_angle = 50.0
 
-[node name="OmniLight" type="OmniLight" parent="NavigationMeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 20, 0 )
-omni_range = 50.0
+[node name="SpotLight3" type="SpotLight" parent="NavigationMeshInstance/Tower"]
+transform = Transform( -0.235453, -0.21621, 0.384467, 0.290979, 0.2514, 0.319577, -0.331502, 0.374234, 0.00743941, -2.87431, 20.6581, 0 )
+light_color = Color( 1, 0.858824, 0.729412, 1 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_bias = 0.2
+spot_range = 200.0
+spot_angle = 50.0
 
-[node name="OmniLight2" type="OmniLight" parent="NavigationMeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 20, 0 )
-omni_range = 50.0
+[node name="SpotLight2" type="SpotLight" parent="NavigationMeshInstance/Tower"]
+transform = Transform( 0.28218, -0.407793, 0.0638675, 0.290979, 0.2514, 0.319577, -0.292755, -0.143189, 0.379198, 0.113575, 20.6581, -2.94168 )
+light_color = Color( 1, 0.858824, 0.729412, 1 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_bias = 0.2
+spot_range = 200.0
+spot_angle = 50.0
 
-[node name="OmniLight3" type="OmniLight" parent="NavigationMeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -95 )
-omni_range = 50.0
-
-[node name="OmniLight4" type="OmniLight" parent="NavigationMeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 95 )
-omni_range = 50.0
+[node name="SpotLight4" type="SpotLight" parent="NavigationMeshInstance/Tower"]
+transform = Transform( -0.31902, 0.384807, -0.0122428, 0.290979, 0.2514, 0.319577, 0.252107, 0.196778, -0.384344, 0.113575, 20.6581, 2.83648 )
+light_color = Color( 1, 0.858824, 0.729412, 1 )
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_specular = 1.0
+light_bake_mode = 2
+shadow_enabled = true
+shadow_bias = 0.2
+spot_range = 200.0
+spot_angle = 50.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 0.934024, -0.357211, 0, 0.357211, 0.934024, 0, 27.0942, 0 )
+FOV_ADS = 40.0
 
 [node name="Spawner" type="Spatial" parent="."]
 script = ExtResource( 4 )
@@ -510,7 +570,16 @@ curve = SubResource( 6 )
 [node name="SpawnLocation" type="PathFollow" parent="Spawner/SpawnPath"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
+environment = SubResource( 8 )
+
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.2389, 0 )
+layers = 1023
+bake_cell_size = 0.01
+bake_mode = 1
+bake_hdr = true
+bake_extents = Vector3( 147.399, 21.5601, 148.367 )
+light_data = SubResource( 9 )
 [connection signal="body_entered" from="NavigationMeshInstance/Tower/Area" to="NavigationMeshInstance/Tower" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="NavigationMeshInstance/Tower/Area" to="NavigationMeshInstance/Tower" method="_on_Area_body_exited"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]

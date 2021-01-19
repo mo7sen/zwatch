@@ -34,7 +34,7 @@ func fire():
 	var root = get_tree().root.get_children()[0]
 	root.add_child(bullet_clone)
 	bullet_clone.global_transform = self.global_transform
-	var bullet_offset = Vector3(0, 0, 0)
+	var bullet_offset = global_transform.basis.z * 4.758
 	bullet_clone.global_transform.origin += bullet_offset
 	
 	var ray = get_owner().ray
