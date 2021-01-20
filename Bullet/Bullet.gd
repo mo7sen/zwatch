@@ -1,20 +1,36 @@
 extends Spatial
 
-var BULLET_SPEED = 0.1
+signal bullet_end
 
-const KILL_TIMER = 10
+var BULLET_SPEED = 300
+
+const KILL_TIMER = 2
 var timer = 0
 
+var velocity
 var target
+var prev_distance = INF
 
 func _process(delta):
-	global_transform.origin = lerp(global_transform.origin, target, BULLET_SPEED)
+	global_transform.origin += velocity * delta
+	if target != null:
+		var current_distance = (global_transform.origin - target).length()
+		if current_distance > prev_distance:
+			emit_signal("bullet_end")
+			queue_free()
+		else:
+			prev_distance = current_distance
 	timer += delta
-	if timer >= KILL_TIMER or (global_transform.origin - target).length() < 0.2:
+	if timer >= KILL_TIMER:
 		queue_free()
 
 func set_target(t):
+	var direction
 	if t != null:
+		direction = (t - global_transform.origin).normalized()
 		target = t
 	else:
-		target = global_transform.basis.z * 100
+		direction = global_transform.basis.z.normalized()
+		target = null
+	
+	velocity = direction * BULLET_SPEED

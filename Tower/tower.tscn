@@ -102,7 +102,7 @@ surfaces/0 = {
 extents = Vector3( 41.6469, 1.87035, 41.9258 )
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 1, 1.12912, 39.5476 )
+extents = Vector3( 0.60359, 0.784262, 40.0052 )
 
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 20.9486, 1, 1 )
@@ -285,7 +285,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5556, 19.41, 0 )
 shape = SubResource( 8 )
 
 [node name="Side2" type="CollisionShape" parent="Cabin/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3426, 19.41, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5913, 19.41, 0 )
 shape = SubResource( 8 )
 
 [node name="Side3" type="CollisionShape" parent="Cabin/StaticBody"]

@@ -39,14 +39,12 @@ var flying := false
 onready var animation_tree = $Head/ArmedArms/AnimationTree
 onready var animation_playback = animation_tree.get("parameters/playback")
 
-# Called when the node enters the scene tree
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	cam.fov = FOV
 	animation_playback.start("IdleAnimation")
 	GameControl.set_healthbar($CanvasLayer/Control/Healthbar)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(_delta: float) -> void:
 	move_axis.x = Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")
 	move_axis.y = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -64,7 +62,6 @@ func _process(_delta: float) -> void:
 	cam.set_fov(lerp(cam.fov, target_fov, FOV_SWITCH_SPEED))
 
 
-# Called every physics tick. 'delta' is constant
 func _physics_process(delta: float) -> void:
 	if flying:
 		fly(delta)
@@ -72,7 +69,6 @@ func _physics_process(delta: float) -> void:
 		walk(delta)
 
 
-# Called when there is an input event
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_axis = event.relative

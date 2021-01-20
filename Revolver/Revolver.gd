@@ -36,6 +36,10 @@ func fire():
 	bullet_clone.global_transform = self.global_transform
 	var bullet_offset = global_transform.basis.z * 4.758
 	bullet_clone.global_transform.origin += bullet_offset
+		
+	current_ammo -= 1
+	update_ammo_label()
+	GameControl.reg_bullet()
 	
 	var ray = get_owner().ray
 	ray.force_raycast_update()
@@ -44,11 +48,7 @@ func fire():
 		bullet_clone.set_target(target_collision)
 		var target_body = ray.get_collider()
 		if target_body.has_method("bullet_hit"):
-			target_body.bullet_hit(DAMAGE)
-		
+			bullet_clone.connect("bullet_end", target_body, "bullet_hit", [DAMAGE])
 	else:
 		bullet_clone.set_target(null)
-	
-	current_ammo -= 1
-	update_ammo_label()
-	GameControl.reg_bullet()
+
