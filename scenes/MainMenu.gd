@@ -7,7 +7,7 @@ func _ready():
 	gameScene = preload("res://scenes/World.tscn")
 	
 func _on_NewGame_Button_pressed():
-	GameControl.score = 0
+	GameControl.reset_game()
 	get_tree().paused = false	
 	get_tree().change_scene_to(gameScene)
 

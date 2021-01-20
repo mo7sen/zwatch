@@ -15,7 +15,7 @@ var spawner_node
 
 var Tower = null
 
-func _ready():
+func reset_game():
 	score = 0
 	enemies_killed = 0
 	headshot_count = 0
@@ -23,6 +23,9 @@ func _ready():
 	wave_size = 1
 	wave_number = 1
 	enemies_alive = wave_size
+
+func _ready():
+	reset_game()
 
 func set_spawner(spawner):
 	spawner_node = spawner
@@ -62,6 +65,7 @@ func set_healthbar(bar):
 		Tower.set_healthbar(bar)
 
 func lose():
+	_ready()
 	get_tree().paused = true
 	gameUI.showEndGamePanel()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
